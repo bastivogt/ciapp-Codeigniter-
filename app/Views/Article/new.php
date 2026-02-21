@@ -17,21 +17,7 @@
     <?php endif; ?>
 
     <?= form_open(url_to("Article::create")); ?>
-    <div>
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title" value="<?= old("title"); ?>">
-
-    </div>
-
-    <div>
-        <label for="content">Content</label>
-        <textarea name="content" id="content"><?= old("content"); ?></textarea>
-
-    </div>
-
-    <div>
-        <button>Create</button>
-    </div>
+        <?= $this->include("Article/form"); ?>
     </form>
     <p>
         <a href="<?= url_to("Article::index"); ?>">All articles</a>

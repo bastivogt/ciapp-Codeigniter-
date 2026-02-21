@@ -10,6 +10,7 @@ class ArticleModel extends Model
     // protected $primaryKey       = 'id';
     // protected $useAutoIncrement = true;
     // protected $returnType       = 'array';
+    protected $returnType          = \App\Entities\Article::class;
     // protected $useSoftDeletes   = false;
     // protected $protectFields    = true;
     protected $allowedFields    = ["title", "content"];

@@ -13,7 +13,7 @@
     <ul>
         <?php foreach($articles as $article): ?>
             <li>
-                <a href="<?= url_to("Article::show", $article["id"]) ?>"><?= esc($article["title"]); ?></a>
+                <a href="<?= url_to("Article::show", $article->id) ?>"><?= esc($article->title); ?></a>
             </li>
         <?php endforeach; ?>
     </ul>
