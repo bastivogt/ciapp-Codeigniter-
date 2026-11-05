@@ -17,7 +17,8 @@ $routes->get("about", [Home::class, "about"]);
 
 $routes->get("article/all", [Article::class, "index"]);
 # $routes->get("article/(:num)", [Article::class, "show/$1"]);
-$routes->get("article/(:num)", "Article::show/$1");
+# $routes->get("article/(:num)", "Article::show/$1");
+$routes->get("article/(:num)", [Article::class, "show"]);
 $routes->get("article/new", "Article::new");
 $routes->post("article/create", "Article::create");
 $routes->get("article/edit/(:num)", "Article::edit/$1");

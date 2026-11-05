@@ -27,7 +27,9 @@ class Article extends BaseController
     public function index()
     {
 
-        $articles = $this->model->findAll();
+        $articles = $this->model->
+            orderBy("id", "DESC")->
+            findAll();
 
         return view("Article/index", [
             "title"    => "All Articles",
@@ -35,7 +37,7 @@ class Article extends BaseController
         ]);
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         $article = $this->getArticleOr404($id);
         return view("Article/show", [
@@ -57,10 +59,10 @@ class Article extends BaseController
     {
         # dd($this->request->getPost());
 
-        $data    = $this->request->getPost();
+        # $data    = $this->request->getPost();
         $article = new \App\Entities\Article($this->request->getPost());
         $id      = $this->model->insert($article);
-        if ($id === null) {
+        if (! $id) {
             return redirect()->back()
                 ->with("errors", $this->model->errors())
                 ->withInput();
@@ -104,10 +106,10 @@ class Article extends BaseController
     {
         $article = $this->getArticleOr404($id);
 
-        if($this->request->getMethod() === "POST") {
+        if ($this->request->getMethod() === "POST") {
             $this->model->delete($id);
             return redirect()->to(url_to("Article::index"))
-                                ->with("message", "Article deleted!");
+                ->with("message", "Article deleted!");
 
         }
 
