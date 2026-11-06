@@ -17,6 +17,7 @@
     <?php endif; ?>
 
     <?= form_open(url_to("Article::update", $article->id)); ?>
+        <input type="hidden" name="_method" value="PUT">
         <?= $this->include("Article/form"); ?>
     </form>
     <p>

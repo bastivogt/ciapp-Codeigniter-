@@ -15,14 +15,23 @@ $routes->get('/', 'Home::index');
 $routes->get("about", [Home::class, "about"]);
 
 
-$routes->get("article/all", [Article::class, "index"]);
-# $routes->get("article/(:num)", [Article::class, "show/$1"]);
-# $routes->get("article/(:num)", "Article::show/$1");
-$routes->get("article/(:num)", [Article::class, "show"]);
-$routes->get("article/new", "Article::new");
-$routes->post("article/create", "Article::create");
-$routes->get("article/edit/(:num)", "Article::edit/$1");
-$routes->post("article/update/(:num)", "Article::update/$1");
-$routes->get("article/delete/(:num)", "Article::delete/$1");
-#$routes->post("article/delete/(:num)", "Article::delete/$1");
-$routes->post("article/destroy/(:num)", [Article::class, "destroy"]);
+// $routes->get("article/all", [Article::class, "index"]);
+// # $routes->get("article/(:num)", [Article::class, "show/$1"]);
+// # $routes->get("article/(:num)", "Article::show/$1");
+// $routes->get("article/(:num)", [Article::class, "show"]);
+// $routes->get("article/new", "Article::new");
+// $routes->post("article/create", "Article::create");
+// $routes->get("article/edit/(:num)", "Article::edit/$1");
+// $routes->post("article/update/(:num)", "Article::update/$1");
+// $routes->get("article/delete/(:num)", "Article::delete/$1");
+// #$routes->post("article/delete/(:num)", "Article::delete/$1");
+// $routes->post("article/destroy/(:num)", [Article::class, "destroy"]);
+
+$routes->get("articles", [Article::class, "index"]);
+$routes->get("articles/(:num)", [Article::class, "show"]);
+$routes->get("articles/new", [Article::class, "new"]);
+$routes->post("articles", [Article::class, "create"]);
+$routes->get("articles/(:num)/edit", [Article::class, "edit"]);
+$routes->put("articles/(:num)", [Article::class, "update"]);
+$routes->get("articles/(:num)/delete", [Article::class, "delete"]);
+$routes->delete("articles/(:num)", [Article::class, "destroy"]);

@@ -84,7 +84,9 @@ class Article extends BaseController
     public function update($id)
     {
         $article = $this->getArticleOr404($id);
-        $article->fill($this->request->getPost());
+        
+        $article->fill($this->request->getRawInputVar(["title", "content"]));
+
 
         if (! $article->hasChanged()) {
             return redirect()->back()->with("message", "Nothing changed!");
