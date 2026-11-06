@@ -106,16 +106,25 @@ class Article extends BaseController
     {
         $article = $this->getArticleOr404($id);
 
-        if ($this->request->getMethod() === "POST") {
-            $this->model->delete($id);
-            return redirect()->to(url_to("Article::index"))
-                ->with("message", "Article deleted!");
+        // if ($this->request->getMethod() === "POST") {
+        //     $this->model->delete($id);
+        //     return redirect()->to(url_to("Article::index"))
+        //         ->with("message", "Article deleted!");
 
-        }
+        // }
 
         return view("Article/delete", [
             "title"   => "Delete: " . $article->title,
             "article" => $article,
         ]);
+    }
+
+
+    public function destroy($id)
+    {
+        $article = $this->getArticleOr404($id);
+        $this->model->delete($id);
+        return redirect()->to(url_to("Article::index"))
+            ->with("message", "Article deleted!");
     }
 }

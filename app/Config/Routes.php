@@ -24,4 +24,5 @@ $routes->post("article/create", "Article::create");
 $routes->get("article/edit/(:num)", "Article::edit/$1");
 $routes->post("article/update/(:num)", "Article::update/$1");
 $routes->get("article/delete/(:num)", "Article::delete/$1");
-$routes->post("article/delete/(:num)", "Article::delete/$1");
+#$routes->post("article/delete/(:num)", "Article::delete/$1");
+$routes->post("article/destroy/(:num)", [Article::class, "destroy"]);

@@ -9,7 +9,7 @@
     <h1><?= $title; ?></h1>
     <p>Are you sure?</p>
 
-    <?= form_open(url_to("Article::delete", $article->id)) ?>
+    <?= form_open(url_to("Article::destroy", $article->id)) ?>
 
         <button>Yes</button>
     </form>
