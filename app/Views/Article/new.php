@@ -16,11 +16,11 @@
         </ul>
     <?php endif; ?>
 
-    <?= form_open(url_to("Article::create")); ?>
+    <?= form_open(url_to("ArticleController::create")); ?>
         <?= $this->include("Article/form"); ?>
     </form>
     <p>
-        <a href="<?= url_to("Article::index"); ?>">All articles</a>
+        <a href="<?= url_to("ArticleController::index"); ?>">All articles</a>
     </p>
 
 

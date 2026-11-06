@@ -4,8 +4,9 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ArticleModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use App\Entities\ArticleEntity;
 
-class Article extends BaseController
+class ArticleController extends BaseController
 {
 
     private $model;
@@ -15,7 +16,7 @@ class Article extends BaseController
         $this->model = new ArticleModel();
     }
 
-    private function getArticleOr404($id): \App\Entities\Article
+    private function getArticleOr404($id): ArticleEntity
     {
         $article = $this->model->find($id);
         if ($article === null) {
@@ -51,7 +52,7 @@ class Article extends BaseController
 
         return view("Article/new", [
             "title"   => "Create new article",
-            "article" => new \App\Entities\Article(),
+            "article" => new ArticleEntity(),
         ]);
     }
 
@@ -60,14 +61,14 @@ class Article extends BaseController
         # dd($this->request->getPost());
 
         # $data    = $this->request->getPost();
-        $article = new \App\Entities\Article($this->request->getPost());
+        $article = new ArticleEntity($this->request->getPost());
         $id      = $this->model->insert($article);
         if (! $id) {
             return redirect()->back()
                 ->with("errors", $this->model->errors())
                 ->withInput();
         }
-        return redirect()->to(url_to("Article::show", $id))
+        return redirect()->to(url_to("ArticleController::show", $id))
             ->with("message", "Article created!");
     }
 
@@ -95,7 +96,7 @@ class Article extends BaseController
         $success = $this->model->update($id, $article);
 
         if ($success) {
-            return redirect()->to(url_to("Article::show", $id))
+            return redirect()->to(url_to("ArticleController::show", $id))
                 ->with("message", "Article updated!");
         } else {
             return redirect()->back()
@@ -110,7 +111,7 @@ class Article extends BaseController
 
         // if ($this->request->getMethod() === "POST") {
         //     $this->model->delete($id);
-        //     return redirect()->to(url_to("Article::index"))
+        //     return redirect()->to(url_to("ArticleController::index"))
         //         ->with("message", "Article deleted!");
 
         // }
@@ -126,7 +127,7 @@ class Article extends BaseController
     {
         $article = $this->getArticleOr404($id);
         $this->model->delete($id);
-        return redirect()->to(url_to("Article::index"))
+        return redirect()->to(url_to("ArticleController::index"))
             ->with("message", "Article deleted!");
     }
 }

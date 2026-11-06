@@ -9,9 +9,11 @@
     <h1><?= $title; ?></h1>
     <p>Are you sure?</p>
 
-    <?= form_open(url_to("Article::destroy", $article->id)) ?>
+    <?= form_open(url_to("ArticleController::destroy", $article->id)) ?>
         <input type="hidden" name="_method" value="DELETE">
         <button>Yes</button>
     </form>
-
+    <p>
+        <a href="<?= url_to("ArticleController::index"); ?>">All articles</a>
+    </p>
 <?= $this->endSection(); ?>

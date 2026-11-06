@@ -16,12 +16,12 @@
         </ul>
     <?php endif; ?>
 
-    <?= form_open(url_to("Article::update", $article->id)); ?>
+    <?= form_open(url_to("ArticleController::update", $article->id)); ?>
         <input type="hidden" name="_method" value="PUT">
         <?= $this->include("Article/form"); ?>
     </form>
     <p>
-        <a href="<?= url_to("Article::index"); ?>">All articles</a>
+        <a href="<?= url_to("ArticleController::index"); ?>">All articles</a>
     </p>
 
 
