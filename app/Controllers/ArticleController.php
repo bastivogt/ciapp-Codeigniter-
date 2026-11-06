@@ -2,9 +2,9 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Entities\ArticleEntity;
 use App\Models\ArticleModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
-use App\Entities\ArticleEntity;
 
 class ArticleController extends BaseController
 {
@@ -27,7 +27,6 @@ class ArticleController extends BaseController
 
     public function index()
     {
-
         $articles = $this->model->
             orderBy("id", "DESC")->
             findAll();
@@ -85,9 +84,8 @@ class ArticleController extends BaseController
     public function update($id)
     {
         $article = $this->getArticleOr404($id);
-        
-        $article->fill($this->request->getRawInputVar(["title", "content"]));
 
+        $article->fill($this->request->getRawInputVar(["title", "content"]));
 
         if (! $article->hasChanged()) {
             return redirect()->back()->with("message", "Nothing changed!");
@@ -121,7 +119,6 @@ class ArticleController extends BaseController
             "article" => $article,
         ]);
     }
-
 
     public function destroy($id)
     {
