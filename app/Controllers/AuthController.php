@@ -45,6 +45,7 @@ class AuthController extends BaseController
             // Redirect back with error message
             return redirect()
                 ->with('message', 'Invalid email or password')
+                ->withInput()
                 ->back()->with('errors', ['Invalid email or password']);
         }
 
