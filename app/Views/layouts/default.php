@@ -9,12 +9,17 @@
     <title>CIApp - <?= $this->renderSection("title") ?></title>
 </head>
 <body>
+    <section class="message">
     <?php if(session()->has("message")): ?>
         <section>
             <p><?= session("message"); ?></p>
         </section>
+    </section>
         
     <?php endif; ?>
+    <header>
+        <?= $this->include('Includes/nav'); ?>
+    </header>
     <main>
         <?= $this->renderSection("content"); ?>
     </main>

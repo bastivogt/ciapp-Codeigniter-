@@ -5,6 +5,7 @@ use Config\App;
 
 use App\Controllers\Home;
 use App\Controllers\ArticleController;
+use App\Controllers\AuthController;
 
 /**
  * @var RouteCollection $routes
@@ -35,3 +36,10 @@ $routes->get("articles/(:num)/edit", [ArticleController::class, "edit"]);
 $routes->put("articles/(:num)", [ArticleController::class, "update"]);
 $routes->get("articles/(:num)/delete", [ArticleController::class, "delete"]);
 $routes->delete("articles/(:num)", [ArticleController::class, "destroy"]);
+
+// Auth
+$routes->get("auth/login", [AuthController::class, "loginForm"]);
+$routes->post("auth/login", [AuthController::class, "login"]);
+$routes->get("auth/register", [AuthController::class, "register"]);
+$routes->post("auth/register", [AuthController::class, "register"]);
+$routes->post("auth/logout", [AuthController::class, "logout"]);
